@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "48c8",
+      "fullName": "aa",
+      "email": "a@a",
+      "password": "aa"
+    },
+    {
+      "id": "34e4",
+      "fullName": "Filip Porzucek",
+      "email": "filip.porzucek@op.pl",
+      "password": "aaa"
+    },
+    {
+      "id": "0e61",
+      "fullName": "Patryk P",
+      "email": "filipporzucek81@gmail.com",
+      "password": "aa"
+    }
+  ]
+}

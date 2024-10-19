@@ -1,0 +1,66 @@
+<form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
+
+  <p-card header="Rejestracja" class="custom-card">
+    <div class="p-field">
+    <label for="fullName">Podaj Imię i Nazwisko</label>
+    <input type="text"
+    pInputText
+    formControlName="fullName"
+    name="fullName"
+    placeholder="Wpisz imie oraz nazwikso"
+    />
+    <small *ngIf="fullName.invalid&&(fullName.dirty||fullName.touched)">
+      <div *ngIf="fullName.errors?.['required']" class="error">Wymagane jest imie i nazwisko</div>
+      <div *ngIf="fullName.errors?.['invalidUsername']" class="error">Pole nie powinno zawierać liczb</div>
+    </small>
+  </div>
+  <div class="p-field">
+    <label for="email">Podaj Email</label>
+    <input type="text"
+    formControlName="email"
+     name="Email"
+     pInupText
+     placeholder="Wpisz swój email"
+     />
+     <small *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div *ngIf="email.errors?.['required']" class="error">Email jest wymagany</div>
+      <div *ngIf="email.errors?.['email']" class="error">Podaj prawidłowy adres email</div>
+     </small>
+  </div>
+  <div class="p-field">
+    <label for="password">Podaj hasło</label>
+    <input type="password"
+    pInupText
+    formControlName="password"
+    name="password"
+    placeholder="Podaj hasło"
+    />
+    <small *ngIf="password.invalid&&(password.dirty||password.touched)">
+    <div *ngIf="password.errors?.['required']" class="error"> Podaj hasło</div>
+  </small>
+  </div>
+  <div class="p-field">
+    <label for="confirmPassword">Potwierdź hasło</label>
+    <input type="password"
+    pInputText
+    formControlName="confirmPassword"
+    name="confirmPassword"
+    placeholder="Powtórz hasło"
+    />
+    <small *ngIf="password.invalid&&(confirmPassword.dirty||confirmPassword.touched)">
+      <div *ngIf="password.errors?.['required']" class="error"> Potwierdź hasło</div>
+    </small>
+    <small *ngIf="registerForm.errors?.['passwordMissmatch'] && confirmPassword.valid && password.valid " class="error">Hasła muszą być takie same </small>
+  </div>
+  <p-button 
+ 
+  [disabled]="registerForm.invalid"
+  type="submit"
+  >
+    Zarejestruj się
+  </p-button>
+  <div>Posiadasz już konto<a routerLink="/login">Zaloguj </a></div>
+
+
+  </p-card>
+</form>
