@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { MessageService } from 'primeng/api';
 import { authguardTsGuard } from './guards/authguard.ts.guard';
+import { ConfirmationService } from 'primeng/api';
 
 
 
@@ -43,7 +44,8 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(),
     provideRouter(routes ),
-    MessageService
+    MessageService,
+    ConfirmationService
     
     
   ],

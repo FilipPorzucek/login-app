@@ -1,0 +1,64 @@
+
+  <div class="conrainer"> 
+    <h2 >Produkty</h2>
+    <p-button label="Dodaj produkt" (onClick)="showDialog()"></p-button>
+  </div>
+  <div class="card">
+  <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="5"     [tableStyle]="{ 'min-width': '50rem' }"
+  [rowsPerPageOptions]="[5, 10, 20]">
+  <ng-template pTemplate="caption">
+    <div class="space-x ">
+      <app-filter (selectCategory)="getProductByCategory($event)"></app-filter>
+      <app-search></app-search>
+    </div>
+  </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Image</th>
+              <th></th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+          <tr>
+              <td>{{ product.title}}</td>
+              <td>{{ product.price}}</td>
+              <td>{{ product.category }}</td>
+              <td><img class="img" src="{{ product.image }}"/></td>
+              <td>
+                <p-button class="custom-button" pButton 
+                icon="pi pi-pencil"
+                (onClick)="showEditModal(product)"
+                ></p-button>
+              </td>
+              <td> 
+               <div>
+              
+                <button pButton 
+                class="custom-button-delete"
+                icon="pi pi-trash"
+                (click)="deleteProduct($event,product)" 
+                severity="danger" 
+                [outlined]="true">
+</button>
+       
+      </div>
+
+              </td>
+              
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
+
+<app-add-edit-product [displayAddEditModal]="displayAddEditModal"
+(clickOnClose)="hideAdd($event)"
+(clickAddEdit)="saveOrUpdateProductList($event)"
+[selectedProduct]="selectedProduct"
+></app-add-edit-product>
+
+<p-toast />
+<p-confirmDialog />

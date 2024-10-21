@@ -1,0 +1,6 @@
+<p-autoComplete 
+        [(ngModel)]="selectedProduct"
+        [suggestions]="productList"
+        (completeMethod)="search($event)"
+        field="title"
+        />

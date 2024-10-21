@@ -1,0 +1,55 @@
+<p-dialog 
+    header="{{ modalType }} Produkt"
+    [modal]="true"
+    [(visible)]="displayAddEditModal" 
+    [style]="{ width: '50rem' }" 
+    [maximizable]="true"
+    [draggable]="false"
+    [resizable]="false"
+    (onHide)="closeModal()">
+
+    <form [formGroup]="productForm" class="input-container">
+      <div class="field">
+        <label for="title">
+          TYTUŁ
+        </label>
+        <input type="text" pInputText formControlName="title"/>
+        <small class="error" *ngIf="productForm.controls['title'].invalid &&
+         productForm.controls['title'].dirty">Pole jest wymagane</small>
+      </div>
+      <div class="field">
+        <label class="grup"  for="price">CENA</label>
+        <p-inputNumber class="ss"  id="price" type="number" formControlName="price"></p-inputNumber>
+        <small class="error" *ngIf="productForm.controls['price'].invalid &&
+         productForm.controls['price'].dirty">Pole jest wymagane</small>
+      </div>
+      <div class="field">
+        <label class="grup" id="description" for="description">OPIS</label>
+        <small class="error" *ngIf="productForm.controls['price'].invalid &&
+         productForm.controls['price'].dirty">Pole jest wymagane</small>
+        <textarea pInputTextarea formControlName="description" ></textarea>
+      </div>
+      <div class="field">
+        <label class="grup" for="Image">Zdjęcie</label>
+     
+        <input pInputText id="image" formControlName="image" />
+        <small class="error" *ngIf="productForm.controls['image'].invalid &&
+         productForm.controls['image'].dirty">Pole jest wymagane</small>
+      </div> 
+      <div class="field">
+        <label class="grup" for="category">KATEGORIA</label>
+        <input pInputText id="category" formControlName="category" />
+        <small class="error" *ngIf="productForm.controls['category'].invalid &&
+         productForm.controls['category'].dirty">Pole jest wymagane</small>
+      </div>
+    </form>
+   <ng-template pTemplate="footer">
+    <p-button
+    (click)="closeModal()"
+    label="Wyjdź"
+    ></p-button>
+
+    <p-button (click)="addEdtProduct()" label="{{modalType}}" [disabled]="productForm.invalid"></p-button>
+   </ng-template>
+
+    
